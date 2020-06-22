@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<title>Skates e Morcegos - Feliz Dia dos Namorados!</title>
+
+	</head>
+
+	<body>
+
+		<div id="tela">
+
+			<div id="dialogo">
+				
+				<p id="texto"></p>
+
+				<div id="botao_next" onclick="next()">
+					
+					<p id="texto_next">Próximo</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+	<script>
+
+		var textos = [
+
+			'Era uma vez uma princesa e um princeso que foram acampar na floresta...', 
+			'O princeso foi até o mato porque precisava fazer pipi.',
+			'Foi quando a princesa ouviu um grito desesperado...',
+			'O.O "O que foi isso? Preciso saber o que aconteceu com o princeso...", disse a princesa.'
+
+		];
+		var indice = 0;
+
+		var tela = document.getElementById('tela');
+		var texto = document.getElementById('texto');
+		texto.innerHTML = textos[indice];
+
+		function next() {
+
+			if (textos.length > indice + 1) {
+
+				indice++;
+
+			} else {
+
+				window.location.href = '../index.html?level=level0';
+
+			}
+
+			texto.innerHTML = textos[indice];
+			tela.style.backgroundImage = 'url("img/intro' + String(indice + 1) + '.png")';
+
+			if (indice == 2) {
+
+				var audio = new Audio('../audio/desespero.wav');
+				audio.play();
+
+			} 
+
+			if (indice == 3) {
+
+				var audio = new Audio('../audio/falando.wav');
+				audio.play();
+
+			}
+
+		}
+
+	</script>
+
+	<style>
+
+		#tela {
+
+			width: 99vw;
+			height: 97vh;
+			background-image: url("img/intro1.png");
+			background-repeat: no-repeat;
+			background-size: 99vw 97vh;
+			border: 2px solid black;
+
+		}
+
+		#dialogo {
+
+			float: left;
+			width: 50%;
+			height: 25vh;
+			margin-top: 10vh;
+			margin-left: 25%;
+			font-size: 2.5vh;
+			background-color: white;
+			position: relative;
+			border: 2px solid black;
+
+		}
+
+		#texto {
+
+			width: 90%;
+			margin-left: 5%;
+			height: 70%;
+			margin-top: 2.5%;
+			text-align: center;
+			line-height: 17.5vh;
+			vertical-align: middle;
+
+		}
+
+		#texto_next {
+
+			width: 90%;
+			margin-left: 5%;
+			height: 90%;
+			margin-top: 5%;
+			text-align: center;
+			line-height: 6vh;
+			vertical-align: middle;
+			color: white;
+			font-size: 2.5vh;
+			font-weight: bold;
+
+		}
+
+		#texto_next:hover {
+
+			cursor: pointer;
+
+		}
+
+		#botao_next {
+
+			float: right;
+			width: 15%;
+			height: 30%;
+			position: absolute;
+			bottom: 10px;
+			right: 25px;
+			background-color: #cc912d;
+
+		}
+
+	</style>
+
+</html>

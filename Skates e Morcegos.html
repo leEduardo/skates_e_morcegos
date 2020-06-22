@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<title>Skates e Morcegos - Feliz Dia dos Namorados!</title>
+
+	</head>
+
+	<body>
+
+		<div id="tela">
+
+			<img id="titulo" class="img_titulo" src="arquivos/img/titulo.png">
+
+			<img id="botao_novo_jogo" class="img_titulo botao_titulo" src="arquivos/img/botao_novo_jogo.png" onclick="novoJogo()">
+			<img id="botao_continuar" class="img_titulo botao_titulo" src="arquivos/img/botao_continuar.png" onclick="continuar()">
+
+		</div>
+
+	</body>
+
+	<style>
+
+		#tela {
+
+			width: 99vw;
+			height: 97vh;
+			background-image: url("arquivos/img/fundo_titulo.png");
+			background-repeat: no-repeat;
+			background-size: 99vw 97vh;
+			border: 2px solid black;
+
+		}
+
+		.img_titulo {
+
+			filter: brightness(120%);
+
+		}
+
+		.botao_titulo:hover {
+
+			cursor: pointer;
+
+		}
+
+		#titulo {
+
+			width: 35%;
+			float: left;
+			margin-left: 32.5%;
+			margin-top: 5vh;
+
+		}
+
+		#botao_novo_jogo {
+
+			width: 12%;
+			float: left;
+			margin-left: 44%;
+			margin-top: -5vh;
+
+		}
+
+		#botao_continuar {
+
+			width: 12%;
+			float: left;
+			margin-left: 44%;
+			margin-top: 1vh;
+
+		}
+
+	</style>
+
+	<script>
+
+		function novoJogo() {
+
+			window.location.href = 'arquivos/cutscenes/intro.html';
+
+		}
+
+		function continuar() {
+
+			window.location.href = 'arquivos/index.html?acao=continuar';
+
+		}
+
+		var titulo = document.getElementById('titulo');
+		var margin_top = 5;
+		var margin_top_inicial = 5;
+		var descendo = true;
+
+		function mover() {
+
+			if (descendo) {
+
+				if (margin_top < margin_top_inicial + 3.5) {
+
+					margin_top += 0.05;
+
+				} else {
+
+					descendo = false;
+
+				}
+
+			} else {
+
+				if (margin_top > margin_top_inicial) {
+
+					margin_top -= 0.05;
+
+				} else {
+
+					descendo = true;
+
+				}
+
+			}
+
+			titulo.style.marginTop = String(margin_top) + 'vh';
+
+			requestAnimationFrame(mover);
+
+		}
+
+		mover();
+
+	</script>
+
+</html>
